@@ -1,0 +1,13 @@
+# Defining the line endings for this repo so that we are consistent from the start
+* text eol=lf
+
+# `binary` Tells Git to treat these files as binary data and leave their bytes untouched (no line ending conversion).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.jar binary
+*.class binary
