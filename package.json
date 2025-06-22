@@ -1,0 +1,44 @@
+{
+  "name": "project-jungle-web",
+  "version": "0.1.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "optimize": "vite optimize",
+    "serve": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint --ext .ts,.tsx,.vue src",
+    "clean": "rimraf dist node_modules package-lock.json",
+    "deps": "npm install",
+    "format": "prettier --write .",
+    "newDepsBuild": "npm run clean && npm install && npm run build"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.3",
+    "axios": "^1.8.4",
+    "highcharts-vue": "^2.0.1",
+    "json-bigint": "^1.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vue3-select-component": "^0.10.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^22.14.1",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.24.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "stylelint": "^16.18.0",
+    "tailwindcss": "^4.1.4",
+    "vite": "^6.2.6",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vue-tsc": "^2.2.8"
+  }
+}
