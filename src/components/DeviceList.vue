@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4">
-    <h2 class="text-2xl font-bold mb-4 text-center text-white">Devices</h2>
+    <h2 class="text-2xl font-bold mb-4 text-left text-white">Devices</h2>
     <input type="checkbox" v-model="showAll"/> Show All
     <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <li v-for="device in filteredItems" :key="device.id"
@@ -27,7 +27,8 @@
               Connected to {{ getParentDeviceName(device.parent_hardware_id) }}
             </router-link>
           </p>
-          <div class="mt-auto flex justify-end space-x-2">
+          
+        <div class="mt-auto pt-4 flex justify-end space-x-2 border-t border-gray-700">
             <button @click="$emit('edit', device)"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Edit

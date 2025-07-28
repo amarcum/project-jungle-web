@@ -1,12 +1,12 @@
 <template>
-  <div v-if="isLoadingSensors || sensors.length == 0" class="flex justify-center items-center h-64">
+  <div v-if="isLoadingSensors" class="flex justify-center items-center h-64">
     <div class="flex items-center space-x-2">
       <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
       <p class="text-white">Loading Sensor List...</p>
     </div>
   </div>
-  <div v-else class="mx-auto p-4">
-    <SensorList :sensors="sensors" @edit="openModal"/>
+  <div v-else class="mx-auto p-4 max-w-7xl">
+    <SensorList :sensors="filteredSensors" @edit="openModal"/>
     <div v-if="showModal" class="modal-overlay">
       <div v-if="editingSensor" class="modal-content bg-gray-900 rounded-lg p-4">
         <button @click="showModal = false"
@@ -37,7 +37,17 @@ export default defineComponent({
       isLoadingSensors: false,
       showModal: false,
       editingSensor: null as Sensor | null,
+      showAllSensors: false, // New data property
     };
+  },
+  computed: {
+    filteredSensors(): SensorDetail[] {
+      if (this.showAllSensors) {
+        return this.sensors;
+      } else {
+        return this.sensors.filter(sensor => sensor.sensor.is_enabled);
+      }
+    },
   },
   methods: {
 
@@ -78,6 +88,9 @@ export default defineComponent({
     },
     closeModal() {
       this.showModal = false;
+    },
+    toggleShowAllSensors() { // New method
+      this.showAllSensors = !this.showAllSensors;
     },
   },
   mounted() {

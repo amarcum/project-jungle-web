@@ -27,31 +27,29 @@
 
     <div v-else-if="sensorD" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Main Info Card -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+      <div class="bg-gray-800 rounded-lg shadow-lg p-6 space-y-3 text-gray-300 text-sm">
         <h3 class="text-lg font-semibold text-white mb-4">Sensor Information</h3>
-        <div class="space-y-3">
-          <div class="flex justify-between">
-            <span class="text-gray-400">Name:</span>
-            <span class="text-white">{{ sensorD.sensor.name }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-400">Status:</span>
-            <span :class="[
-              'px-2 py-1 rounded-full text-sm',
-              sensorD.sensor.is_enabled ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
-            ]">
-              {{ sensorD.sensor.is_enabled ? 'Active' : 'Inactive' }}
-            </span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-gray-400">Last Seen:</span>
-            <span class="text-white">{{ formatTimeAgo(sensorD.since_last_seen) }}</span>
-          </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">Name:</span>
+          <span class="text-white">{{ sensorD.sensor.name }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">Status:</span>
+          <span :class="[
+            'px-2 py-1 rounded-full text-sm',
+            sensorD.sensor.is_enabled ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+          ]">
+            {{ sensorD.sensor.is_enabled ? 'Active' : 'Inactive' }}
+          </span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">Last Seen:</span>
+          <span class="text-white">{{ formatTimeAgo(sensorD.since_last_seen) }}</span>
         </div>
       </div>
 
       <!-- Calibration Card -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+      <div class="bg-gray-800 rounded-lg shadow-lg p-6 space-y-3 text-gray-300 text-sm">
         <h3 class="text-lg font-semibold text-white mb-4">Calibration Values</h3>
 
         <div class="relative pt-6">
@@ -123,7 +121,7 @@ const calibrateSensor = async () => {
   
   try {
     await axios.post(`/api/sensor/${route.params.id}/calibrate`);
-    alert('Calibration started! Follow these steps:\n1. Dip sensor in water\n2. Wait for reading to stabilize\n3. Wipe sensor completely dry\n4. Wait for reading to stabilize');
+    alert('Calibration started! Follow these steps\n1. Dip sensor in water\n2. Wait for reading to stabilize\n3. Wipe sensor completely dry\n4. Wait for reading to stabilize');
     await fetchSensor(); // Refresh data after calibration
   } catch (error) {
     console.error('Error starting calibration:', error);
